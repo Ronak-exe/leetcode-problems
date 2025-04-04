@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main() {
+    int N, i, deleteElement, found = 0;
+
+    scanf("%d", &N);
+    if (N < 1 || N > 100) {
+        return 1;
+    }
+
+    int list[N];
+    for (i = 0; i < N; i++) {
+        scanf("%d", &list[i]);
+    }
+
+    scanf("%d", &deleteElement);
+    for (i = 0; i < N; i++) {
+        if (list[i] == deleteElement) {
+            found = 1;
+            break;
+        }
+    }
+
+    if (found) {
+        for (int j = i; j < N - 1; j++) {
+            list[j] = list[j + 1];
+        }
+        N--;
+    }
+
+    for (i = 0; i < N; i++) {
+        printf("%d", list[i]);
+        if (i < N - 1) {
+            printf(" ");
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
