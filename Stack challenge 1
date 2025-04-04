@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+#define MAX 100
+
+typedef struct {
+    int arr[MAX];
+    int top;
+} Stack;
+
+void push(Stack *s, int value) {
+    if (s->top < MAX - 1) {
+        s->arr[++(s->top)] = value;
+    }
+}
+
+int pop(Stack *s) {
+    if (s->top >= 0) {
+        return s->arr[(s->top)--];
+    }
+    return -1;
+}
+
+int main() {
+    Stack stack;
+    stack.top = -1;
+
+    push(&stack, 90);
+    push(&stack, 12);
+    push(&stack, 56);
+    pop(&stack);
+    push(&stack, 88);
+    push(&stack, 12);
+    pop(&stack);
+    pop(&stack);
+    pop(&stack);
+
+    for (int i = 0; i <= stack.top; i++) {
+        printf("%d ", stack.arr[i]);
+    }
+
+    return 0;
+}
